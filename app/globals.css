@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* アムルペッシュブランドカラー */
+:root {
+  --amour-pink: #FFB6C1;
+  --amour-peach: #FFDAB9;
+  --amour-cream: #FFF8DC;
+  --amour-wood: #DEB887;
+  --amour-gold: #DAA520;
+  --amour-gray: #F5F5F5;
+}
+
+/* ベーススタイル */
+@layer base {
+  html {
+    font-family: 'Noto Sans JP', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-gray-900;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif JP', serif;
+    @apply font-light;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* カスタムコンポーネント */
+@layer components {
+  .btn-primary {
+    @apply bg-black hover:bg-gray-800 text-white font-light py-3 px-8 transition-all duration-300 border border-black;
+    letter-spacing: 0.1em;
+    animation: fadeInUp 1.8s ease-out 0.6s both;
+    transform: translateY(0);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-black font-light py-3 px-8 border border-black transition-all duration-300;
+    letter-spacing: 0.1em;
+    animation: fadeInUp 1.8s ease-out 0.8s both;
+    transform: translateY(0);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container-custom {
+    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-amber-600 to-pink-500 bg-clip-text text-transparent;
+  }
+
+  .nav-minimal {
+    @apply fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50;
+    transition: all 0.3s ease;
+    animation: slideInDown 0.6s ease-out;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black text-center;
+    letter-spacing: 0.1em;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .section-minimal {
+    @apply min-h-screen flex items-center justify-center py-20;
+  }
+
+  .hero-text {
+    @apply text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light text-black text-center;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    animation: fadeInUp 1.2s ease-out;
+  }
+
+  @media (max-width: 640px) {
+    .hero-text {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  .body-text {
+    @apply text-base md:text-lg lg:text-xl font-light text-gray-700 leading-relaxed;
+    letter-spacing: 0.02em;
+    animation: fadeIn 1.5s ease-out 0.3s both;
+  }
+
+  .minimal-card {
+    @apply bg-white p-8 md:p-12 shadow-sm hover:shadow-md transition-all duration-500;
+    animation: slideInUp 0.8s ease-out;
+  }
+
+  .minimal-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .section-minimal {
+    @apply min-h-screen flex items-center justify-center py-16 md:py-20;
+  }
+
+  @media (max-width: 768px) {
+    .container-custom {
+      @apply px-4;
+    }
+    
+    .section-minimal {
+      min-height: 80vh;
+    }
+    
+    .minimal-card {
+      @apply p-6;
+    }
+  }
+}
+
+/* アニメーション */
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .parallax-slow {
+    transform: translateY(calc(var(--scroll) * 0.5px));
+  }
+
+  .image-reveal {
+    overflow: hidden;
+  }
+
+  .image-reveal img {
+    transition: transform 0.6s ease-out;
+    transform: scale(1.1);
+  }
+
+  .image-reveal:hover img {
+    transform: scale(1);
+  }
+} 
